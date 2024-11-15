@@ -1,0 +1,16 @@
+services:
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: ./build/Dockerfile
+      target: ${ENV:-development}
+    ports:
+      - "80:80"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./build/Dockerfile
+      target: ${ENV:-development}
+    volumes:
+      - ./frontend:/app
